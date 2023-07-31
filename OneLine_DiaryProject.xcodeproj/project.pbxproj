@@ -16,6 +16,7 @@
 		263F994D2A773AD2000DCAF9 /* DirayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263F994C2A773AD2000DCAF9 /* DirayTableViewController.swift */; };
 		263F99502A773BBE000DCAF9 /* DiaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263F994E2A773BBE000DCAF9 /* DiaryTableViewCell.swift */; };
 		263F99512A773BBE000DCAF9 /* DiaryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 263F994F2A773BBE000DCAF9 /* DiaryTableViewCell.xib */; };
+		263F99532A7752B7000DCAF9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263F99522A7752B7000DCAF9 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		263F994C2A773AD2000DCAF9 /* DirayTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirayTableViewController.swift; sourceTree = "<group>"; };
 		263F994E2A773BBE000DCAF9 /* DiaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTableViewCell.swift; sourceTree = "<group>"; };
 		263F994F2A773BBE000DCAF9 /* DiaryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiaryTableViewCell.xib; sourceTree = "<group>"; };
+		263F99522A7752B7000DCAF9 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				263F994C2A773AD2000DCAF9 /* DirayTableViewController.swift */,
 				263F994E2A773BBE000DCAF9 /* DiaryTableViewCell.swift */,
 				263F994F2A773BBE000DCAF9 /* DiaryTableViewCell.xib */,
+				263F99522A7752B7000DCAF9 /* DetailViewController.swift */,
 			);
 			path = OneLine_DiaryProject;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 				263F993D2A773A46000DCAF9 /* AddViewController.swift in Sources */,
 				263F99502A773BBE000DCAF9 /* DiaryTableViewCell.swift in Sources */,
 				263F994D2A773AD2000DCAF9 /* DirayTableViewController.swift in Sources */,
+				263F99532A7752B7000DCAF9 /* DetailViewController.swift in Sources */,
 				263F99392A773A46000DCAF9 /* AppDelegate.swift in Sources */,
 				263F993B2A773A46000DCAF9 /* SceneDelegate.swift in Sources */,
 			);

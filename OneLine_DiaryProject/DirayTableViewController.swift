@@ -25,18 +25,20 @@ class DirayTableViewController: UITableViewController {
     
     
     @IBAction func addBtnClicked(_ sender: UIBarButtonItem) {
-        
+
         // 1. 스토리보드 파일 찾기 ex) 스토리보드를 Main에 말고 다른 스토리보드 파일에 만들고 reference로 연결 할 수도 있기 때문에
         let stoyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        // 2. 스토리보드 파일 내 뷰 컨트롤러 찾기 - Main 스토리보드에 어떤 VC를 찾을 것인지
+
+        // 2. 스토리보드 파일 내 뷰 컨트롤러 찾기 - 버튼을 눌렀을때 어떤 VC를 띄울것인지 == cell 연결하는 것이랑 비슷함
         guard let vc = stoyboard.instantiateViewController(withIdentifier: "AddViewController") as? AddViewController else { return }
-        
-        
         // 3. 화면 전환 방식 설정
+//        vc.modalTransitionStyle = .crossDissolve
+//
+        vc.modalPresentationStyle = .fullScreen
+
         // 4. 화면 띄우기
         present(vc, animated: true)
-        
+
     }
     
     
@@ -95,4 +97,22 @@ class DirayTableViewController: UITableViewController {
 //    }
 //
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // 1. 스토리보드 파일 찾기 ex) 스토리보드를 Main에 말고 다른 스토리보드 파일에 만들고 reference로 연결 할 수도 있기 때문에
+        let stoyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        // 2. 스토리보드 파일 내 뷰 컨트롤러 찾기 - 버튼을 눌렀을때 어떤 VC를 띄울것인지 == cell 연결하는 것이랑 비슷함
+        guard let vc = stoyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
+        // 3. 화면 전환 방식 설정
+//        vc.modalTransitionStyle = .crossDissolve
+//
+        // vc.modalPresentationStyle = .fullScreen
+        vc.detailString = "디테일 뷰 입니다. \(indexPath.row)"
+        // 4. 화면 띄우기
+       // present(vc, animated: true)
+        
+        // ❗️ 인터페이스 빌더에 네비게이션 컨트롤러가 임베드 되어 있어야만 Push가 동작함 
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
