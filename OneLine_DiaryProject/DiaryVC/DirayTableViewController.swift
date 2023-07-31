@@ -99,24 +99,42 @@ class DirayTableViewController: UITableViewController {
         return true
     }
     // 2. 스와이핑 액션 하기
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        print(#fileID, #function, #line,"- indexPath, editingStyle \(indexPath.row), \(editingStyle)" )
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        print(#fileID, #function, #line,"- indexPath, editingStyle \(indexPath.row), \(editingStyle)" )
+//
+//        list.remove(at: indexPath.row)
+//        // 데이터가 바뀌면 뷰에 업데이트를 해줘야 런타임 오류가 발생하지 않는다.
+//        tableView.reloadData()
+//
+//
+//    }
+
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        list.remove(at: indexPath.row)
-        // 데이터가 바뀌면 뷰에 업데이트를 해줘야 런타임 오류가 발생하지 않는다.
-        tableView.reloadData()
-    
-    
+        let delete = UIContextualAction(style: .destructive, title: "삭제") { [weak self]action, view, _ in
+            guard let self = self else { return }
+            list.remove(at: indexPath.row)
+            
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+       
+        return UISwipeActionsConfiguration(actions: [delete])
+        
     }
-//
-//    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//
-//    }
-//
-//    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//        <#code#>
-//    }
-//
+
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+
+        let best = UIContextualAction(style: .normal, title: "배열 추가") { [weak self] action, view, _ in
+            guard let self = self else { return }
+            
+            self.list.insert("즐겨찾기 버튼을 눌러서 추가됨", at: indexPath.row)
+            print("배열 추가 되었음 \(list)")
+            tableView.reloadData()
+        }
+
+        return UISwipeActionsConfiguration(actions: [best])
+    }
+
 
     
     // MARK: - didSelectedRowAt
@@ -131,13 +149,13 @@ class DirayTableViewController: UITableViewController {
         /*
          생성되는 시점이 DetailVC가 만들어지기 전에 먼저 detailLabel 에 할당을 하려고 하니까 "안만들어졌는데 어떻게 할당해요??" 라는 오류를 발생시킴
          */
-        vc.detailLabel.text = list[indexPath.row]
+       // vc.detailLabel.text = list[indexPath.row]
         
         
         
         // 2️⃣ send - 데이터 보내기 : vc에서 가지고 있는 프로퍼티에 데이터 추가
         let row = list[indexPath.row]
-       // vc.detailString = "디테일 뷰 입니다. \(row)"
+        vc.detailString = "디테일 뷰 입니다. \(row)"
         // 4. 화면 띄우기
         
         // ❗️ 인터페이스 빌더에 네비게이션 컨트롤러가 임베드 되어 있어야만 Push가 동작함 - 👉엔트리 포인트 중요
