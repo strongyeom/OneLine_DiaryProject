@@ -14,6 +14,8 @@ class AddViewController: UIViewController {
         // + 버튼에서 Navigation으로 감쌌기 때문에 제목과 옵션은 띄어지는 부분에서 추가 하면 됨
         navigationItem.title  = "추가 화면"
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(cloaseBtnClicked(_: )))
+        
+        // navigationItem 적용되고 나서 tintColor를 적용해야 함
         navigationItem.leftBarButtonItem?.tintColor = .orange
         setBgColor()
     }

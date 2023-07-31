@@ -26,6 +26,20 @@ class DirayTableViewController: UITableViewController {
         tableView.register(nib, forCellReuseIdentifier: "DiaryTableViewCell")
     }
     
+    @IBAction func searchBtnClicked(_ sender: UIBarButtonItem) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let vc = storyboard.instantiateViewController(withIdentifier: "SearchCollectionViewController") as! SearchCollectionViewController
+        
+        // 띄어지는 view에 네비게이션 바를 넣고 싶을때
+        
+        
+        navigationController?.pushViewController(vc, animated: true)
+ 
+    }
+    
+    
     
     @IBAction func addBtnClicked(_ sender: UIBarButtonItem) {
 
@@ -64,7 +78,7 @@ class DirayTableViewController: UITableViewController {
         let row = list[indexPath.row]
         
         cell.mainLabel.text = row
-        cell.mainLabel.font = UIFont.systemFont(ofSize: 12, weight: .heavy)
+        cell.mainLabel.font = UIFont.systemFont(ofSize: 20, weight: .heavy)
         cell.mainLabel.backgroundColor = .systemBlue
         cell.mainLabel.numberOfLines = 0
         cell.backgroundColor = .clear
