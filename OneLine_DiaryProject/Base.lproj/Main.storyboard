@@ -83,19 +83,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="디테일 VC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VSo-Y4-WEG">
-                                <rect key="frame" x="20" y="79" width="353" height="719"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="디테일 VC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VSo-Y4-WEG">
+                                <rect key="frame" x="20" y="79" width="353" height="657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rJu-7p-2zl">
+                                <rect key="frame" x="0.0" y="769" width="393" height="49"/>
+                                <items>
+                                    <barButtonItem title="삭제" id="UBH-Ao-ReL">
+                                        <connections>
+                                            <action selector="deleteBtnClicked:" destination="NZM-bJ-pny" id="XRI-3B-be7"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="b4I-Ai-eI9"/>
+                                    <barButtonItem title="Item" id="mUS-Kv-dCn"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2Tt-nB-xHx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="rJu-7p-2zl" firstAttribute="leading" secondItem="2Tt-nB-xHx" secondAttribute="leading" id="8kl-hm-kFQ"/>
+                            <constraint firstItem="2Tt-nB-xHx" firstAttribute="bottom" secondItem="rJu-7p-2zl" secondAttribute="bottom" id="DwR-jB-cFn"/>
                             <constraint firstItem="VSo-Y4-WEG" firstAttribute="top" secondItem="2Tt-nB-xHx" secondAttribute="top" constant="20" id="LNu-v8-2Uw"/>
-                            <constraint firstItem="2Tt-nB-xHx" firstAttribute="bottom" secondItem="VSo-Y4-WEG" secondAttribute="bottom" constant="20" id="Qq6-fT-wy3"/>
                             <constraint firstItem="VSo-Y4-WEG" firstAttribute="leading" secondItem="2Tt-nB-xHx" secondAttribute="leading" constant="20" id="jK1-0C-qRY"/>
+                            <constraint firstItem="rJu-7p-2zl" firstAttribute="trailing" secondItem="2Tt-nB-xHx" secondAttribute="trailing" id="lhI-lp-HBv"/>
                             <constraint firstItem="2Tt-nB-xHx" firstAttribute="trailing" secondItem="VSo-Y4-WEG" secondAttribute="trailing" constant="20" id="oZ0-50-KAz"/>
                         </constraints>
                     </view>
@@ -105,7 +119,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yBi-nO-gNh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1982" y="751"/>
+            <point key="canvasLocation" x="1980.916030534351" y="750.70422535211276"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jG7-Mt-CXL">

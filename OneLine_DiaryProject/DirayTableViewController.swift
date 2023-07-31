@@ -19,7 +19,10 @@ class DirayTableViewController: UITableViewController {
         // Xib로 테이블뷰 셀을 생성할 경우, 테이블뷰에 사용할 셀을 등록해주는 과정이 필요
         // bundle : 네비게이터 영역에 있는 파일들 //ex) SPM으로 설치 할 경우 Main에 있지 않기 때문에 추가 코드 필요
         let nib = UINib(nibName: "DiaryTableViewCell", bundle: nil)
+      
         
+        tableView.backgroundColor = .clear
+        setBgColor()
         tableView.register(nib, forCellReuseIdentifier: "DiaryTableViewCell")
     }
     
@@ -31,14 +34,21 @@ class DirayTableViewController: UITableViewController {
 
         // 2. 스토리보드 파일 내 뷰 컨트롤러 찾기 - 버튼을 눌렀을때 어떤 VC를 띄울것인지 == cell 연결하는 것이랑 비슷함
         guard let vc = stoyboard.instantiateViewController(withIdentifier: "AddViewController") as? AddViewController else { return }
+        
+        // 2 - 1 (옵션) 네비게이션 컨트롤러가 있는 형태(제목바)로 Present 하고 싶은 경우
+        // 네비케이션으로 감싼다면, present 전환 방식도 nav로 수정해줘야함
+        let nav = UINavigationController(rootViewController: vc)
+        
+        
+        
         // 3. 화면 전환 방식 설정
 //        vc.modalTransitionStyle = .crossDissolve
 //
-        vc.modalPresentationStyle = .fullScreen
-
+        nav.modalPresentationStyle = .fullScreen
+        
         // 4. 화면 띄우기
-        present(vc, animated: true)
-
+        present(nav, animated: true)
+        
     }
     
     
@@ -57,7 +67,7 @@ class DirayTableViewController: UITableViewController {
         cell.mainLabel.font = UIFont.systemFont(ofSize: 12, weight: .heavy)
         cell.mainLabel.backgroundColor = .systemBlue
         cell.mainLabel.numberOfLines = 0
-        cell.bgView.backgroundColor = .orange
+        cell.backgroundColor = .clear
         return cell
     }
     
@@ -99,20 +109,15 @@ class DirayTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        // 1. 스토리보드 파일 찾기 ex) 스토리보드를 Main에 말고 다른 스토리보드 파일에 만들고 reference로 연결 할 수도 있기 때문에
+        // 🧐 직접 연결 과 차이점
+        // 직접 연결 시 : 파일만 갖고옴 , 연결했던 것은 안가지고 오니까 스토리보드로 구현시 사용할 수 없음 but, 코드로 작성할때는 사용가능
+        // 🔴 코드와 스토리보드 화면에 나타나는 순서가 다름 
         let stoyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        // 2. 스토리보드 파일 내 뷰 컨트롤러 찾기 - 버튼을 눌렀을때 어떤 VC를 띄울것인지 == cell 연결하는 것이랑 비슷함
         guard let vc = stoyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
-        // 3. 화면 전환 방식 설정
-//        vc.modalTransitionStyle = .crossDissolve
-//
-        // vc.modalPresentationStyle = .fullScreen
         vc.detailString = "디테일 뷰 입니다. \(indexPath.row)"
         // 4. 화면 띄우기
-       // present(vc, animated: true)
         
-        // ❗️ 인터페이스 빌더에 네비게이션 컨트롤러가 임베드 되어 있어야만 Push가 동작함 
+        // ❗️ 인터페이스 빌더에 네비게이션 컨트롤러가 임베드 되어 있어야만 Push가 동작함 - 👉엔트리 포인트 중요
         navigationController?.pushViewController(vc, animated: true)
     }
 }
