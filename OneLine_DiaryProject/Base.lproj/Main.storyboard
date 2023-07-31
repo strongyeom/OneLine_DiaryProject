@@ -89,14 +89,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="디테일 VC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VSo-Y4-WEG">
-                                <rect key="frame" x="20" y="79" width="353" height="657"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="디테일 VC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VSo-Y4-WEG">
+                                <rect key="frame" x="20" y="79" width="353" height="675"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rJu-7p-2zl">
-                                <rect key="frame" x="0.0" y="769" width="393" height="49"/>
+                                <rect key="frame" x="0.0" y="774" width="393" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="ZFd-Yw-P1b"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem title="삭제" id="UBH-Ao-ReL">
                                         <connections>
@@ -114,6 +117,7 @@
                             <constraint firstItem="rJu-7p-2zl" firstAttribute="leading" secondItem="2Tt-nB-xHx" secondAttribute="leading" id="8kl-hm-kFQ"/>
                             <constraint firstItem="2Tt-nB-xHx" firstAttribute="bottom" secondItem="rJu-7p-2zl" secondAttribute="bottom" id="DwR-jB-cFn"/>
                             <constraint firstItem="VSo-Y4-WEG" firstAttribute="top" secondItem="2Tt-nB-xHx" secondAttribute="top" constant="20" id="LNu-v8-2Uw"/>
+                            <constraint firstItem="rJu-7p-2zl" firstAttribute="top" secondItem="VSo-Y4-WEG" secondAttribute="bottom" constant="20" id="eCf-KJ-Zfa"/>
                             <constraint firstItem="VSo-Y4-WEG" firstAttribute="leading" secondItem="2Tt-nB-xHx" secondAttribute="leading" constant="20" id="jK1-0C-qRY"/>
                             <constraint firstItem="rJu-7p-2zl" firstAttribute="trailing" secondItem="2Tt-nB-xHx" secondAttribute="trailing" id="lhI-lp-HBv"/>
                             <constraint firstItem="2Tt-nB-xHx" firstAttribute="trailing" secondItem="VSo-Y4-WEG" secondAttribute="trailing" constant="20" id="oZ0-50-KAz"/>

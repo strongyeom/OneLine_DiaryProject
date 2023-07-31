@@ -9,8 +9,10 @@ import UIKit
 
 class DirayTableViewController: UITableViewController {
     
-    var list: [String] = ["테스트 1테스트 1테스트 1테스트 1테스트 1테스트 1테스트 1테스트 1테스트 1", "테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2 테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2", "테스트 3"]
+    var list: [String] = ["테스트 1테스트 1테스트 1테스트 1테스트 1테스트 1테스트 1테스트 1테스트 1", "테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2 테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2테스트 2", "테스트 3 테스트 3 테스트 3 테스트 3 테스트 3 테스트 3 "]
     
+    
+    // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         // Dynamic Height: 1. automaticDimenstion, 2. Label numberOfLines 3. AutoLayout(여백)
@@ -26,6 +28,8 @@ class DirayTableViewController: UITableViewController {
         tableView.register(nib, forCellReuseIdentifier: "DiaryTableViewCell")
     }
     
+    
+    // MARK: - CollectionView로 넘어가기
     @IBAction func searchBtnClicked(_ sender: UIBarButtonItem) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -41,6 +45,8 @@ class DirayTableViewController: UITableViewController {
     
     
     
+    
+    // MARK: - AddBtnClicked
     @IBAction func addBtnClicked(_ sender: UIBarButtonItem) {
 
         // 1. 스토리보드 파일 찾기 ex) 스토리보드를 Main에 말고 다른 스토리보드 파일에 만들고 reference로 연결 할 수도 있기 때문에
@@ -84,17 +90,8 @@ class DirayTableViewController: UITableViewController {
         cell.backgroundColor = .clear
         return cell
     }
-    
-//    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableView.automaticDimension
-//    }
-    
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableView.automaticDimension
-//    }
-    
-    
-    //  1️⃣ 시스템 스와이핑
+
+    //  🟢 시스템 스와이핑
     // 1. 편집 허락 맡기
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         
@@ -121,6 +118,8 @@ class DirayTableViewController: UITableViewController {
 //    }
 //
 
+    
+    // MARK: - didSelectedRowAt
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // 🧐 직접 연결 과 차이점
@@ -128,7 +127,17 @@ class DirayTableViewController: UITableViewController {
         // 🔴 코드와 스토리보드 화면에 나타나는 순서가 다름 
         let stoyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let vc = stoyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
-        vc.detailString = "디테일 뷰 입니다. \(indexPath.row)"
+        // 🤔 직접 넣어주면 안되나요?
+        /*
+         생성되는 시점이 DetailVC가 만들어지기 전에 먼저 detailLabel 에 할당을 하려고 하니까 "안만들어졌는데 어떻게 할당해요??" 라는 오류를 발생시킴
+         */
+        vc.detailLabel.text = list[indexPath.row]
+        
+        
+        
+        // 2️⃣ send - 데이터 보내기 : vc에서 가지고 있는 프로퍼티에 데이터 추가
+        let row = list[indexPath.row]
+       // vc.detailString = "디테일 뷰 입니다. \(row)"
         // 4. 화면 띄우기
         
         // ❗️ 인터페이스 빌더에 네비게이션 컨트롤러가 임베드 되어 있어야만 Push가 동작함 - 👉엔트리 포인트 중요
