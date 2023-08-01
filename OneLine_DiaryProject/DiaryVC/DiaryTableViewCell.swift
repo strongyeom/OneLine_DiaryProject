@@ -9,6 +9,8 @@ import UIKit
 
 class DiaryTableViewCell: UITableViewCell {
     
+    static let identifier = "DiaryTableViewCell"
+    
     @IBOutlet var bgView: UIView!
     @IBOutlet var mainLabel: UILabel!
     

@@ -20,12 +20,12 @@ class DirayTableViewController: UITableViewController {
         
         // Xib로 테이블뷰 셀을 생성할 경우, 테이블뷰에 사용할 셀을 등록해주는 과정이 필요
         // bundle : 네비게이터 영역에 있는 파일들 //ex) SPM으로 설치 할 경우 Main에 있지 않기 때문에 추가 코드 필요
-        let nib = UINib(nibName: "DiaryTableViewCell", bundle: nil)
+        let nib = UINib(nibName: DiaryTableViewCell.identifier, bundle: nil)
       
         
         tableView.backgroundColor = .clear
         setBgColor()
-        tableView.register(nib, forCellReuseIdentifier: "DiaryTableViewCell")
+        tableView.register(nib, forCellReuseIdentifier: DiaryTableViewCell.identifier)
     }
     
     
@@ -33,12 +33,19 @@ class DirayTableViewController: UITableViewController {
     @IBAction func searchBtnClicked(_ sender: UIBarButtonItem) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
+
         let vc = storyboard.instantiateViewController(withIdentifier: "SearchCollectionViewController") as! SearchCollectionViewController
+        /*
+         
+         🧐 같은 Main 스토리 보드에 화면 전환하려는 스토리보드가 있다면 storyboard?에 붙이고 작성하면 간결해짐
+         
+         let vcSameStoryboard = storyboard?.instantiateViewController(withIdentifier: "SearchCollectionViewController") as! SearchCollectionViewController
+
+
+         navigationController?.pushViewController(vcSameStoryboard, animated: true)
+         */
         
         // 띄어지는 view에 네비게이션 바를 넣고 싶을때
-        
-        
         navigationController?.pushViewController(vc, animated: true)
  
     }
@@ -77,7 +84,7 @@ class DirayTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DiaryTableViewCell") as? DiaryTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DiaryTableViewCell.identifier) as? DiaryTableViewCell else {
             return UITableViewCell()
         }
         
