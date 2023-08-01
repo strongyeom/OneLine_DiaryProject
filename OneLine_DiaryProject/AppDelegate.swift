@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        UILabel.appearance().textColor = .blue
+        // UILabel.appearance().textColor = .blue
         UITextView.appearance().textColor = .red
         return true
     }

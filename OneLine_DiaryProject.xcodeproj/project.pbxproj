@@ -21,6 +21,7 @@
 		263F99572A777960000DCAF9 /* SearchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263F99562A777960000DCAF9 /* SearchCollectionViewController.swift */; };
 		263F995A2A777ABC000DCAF9 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263F99582A777ABC000DCAF9 /* SearchCollectionViewCell.swift */; };
 		263F995B2A777ABC000DCAF9 /* SearchCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 263F99592A777ABC000DCAF9 /* SearchCollectionViewCell.xib */; };
+		26F4DF8A2A789B4C0003D0C9 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F4DF892A789B4C0003D0C9 /* SettingTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		263F99562A777960000DCAF9 /* SearchCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewController.swift; sourceTree = "<group>"; };
 		263F99582A777ABC000DCAF9 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		263F99592A777ABC000DCAF9 /* SearchCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCollectionViewCell.xib; sourceTree = "<group>"; };
+		26F4DF892A789B4C0003D0C9 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				263F993E2A773A46000DCAF9 /* Main.storyboard */,
 				263F995E2A777AC3000DCAF9 /* CollectionView */,
 				263F995D2A777AC1000DCAF9 /* DiaryVC */,
+				26F4DF882A789AFA0003D0C9 /* SettingVC */,
 				263F99412A773A49000DCAF9 /* Assets.xcassets */,
 				263F99432A773A49000DCAF9 /* LaunchScreen.storyboard */,
 				263F99462A773A49000DCAF9 /* Info.plist */,
@@ -105,6 +108,14 @@
 				263F99592A777ABC000DCAF9 /* SearchCollectionViewCell.xib */,
 			);
 			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		26F4DF882A789AFA0003D0C9 /* SettingVC */ = {
+			isa = PBXGroup;
+			children = (
+				26F4DF892A789B4C0003D0C9 /* SettingTableViewController.swift */,
+			);
+			path = SettingVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,6 +195,7 @@
 				263F993D2A773A46000DCAF9 /* AddViewController.swift in Sources */,
 				263F99552A776252000DCAF9 /* Ext+UIVC.swift in Sources */,
 				263F99502A773BBE000DCAF9 /* DiaryTableViewCell.swift in Sources */,
+				26F4DF8A2A789B4C0003D0C9 /* SettingTableViewController.swift in Sources */,
 				263F994D2A773AD2000DCAF9 /* DirayTableViewController.swift in Sources */,
 				263F99532A7752B7000DCAF9 /* DetailViewController.swift in Sources */,
 				263F99392A773A46000DCAF9 /* AppDelegate.swift in Sources */,
