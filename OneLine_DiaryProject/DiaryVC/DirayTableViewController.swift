@@ -161,12 +161,12 @@ class DirayTableViewController: UITableViewController {
         
         
         // 2️⃣ send - 데이터 보내기 : vc에서 가지고 있는 프로퍼티에 데이터 추가
-        // let row = list[indexPath.row]
+         let row = list[indexPath.row]
         //vc.detailString = "디테일 뷰 입니다. \(row)"
         
         vc.type = .edit
+        vc.editText = row
         // 4. 화면 띄우기
-        
         // ❗️ 인터페이스 빌더에 네비게이션 컨트롤러가 임베드 되어 있어야만 Push가 동작함 - 👉엔트리 포인트 중요
         navigationController?.pushViewController(vc, animated: true)
         

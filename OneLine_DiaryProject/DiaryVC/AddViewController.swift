@@ -14,7 +14,9 @@ enum TransitionType {
 
 class AddViewController: UIViewController {
 
+    @IBOutlet var textView: UITextView!
     var type: TransitionType = .add
+    var editText: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +30,11 @@ class AddViewController: UIViewController {
             
             // navigationItem 적용되고 나서 tintColor를 적용해야 함
             navigationItem.leftBarButtonItem?.tintColor = .orange
+            textView.text = ""
         case .edit:
             title = "수정 화면"
+            guard let editText else { return }
+            textView.text = editText
         }
         
   
