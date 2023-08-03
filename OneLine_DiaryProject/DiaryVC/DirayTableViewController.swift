@@ -61,7 +61,7 @@ class DirayTableViewController: UITableViewController {
 
         // 2. 스토리보드 파일 내 뷰 컨트롤러 찾기 - 버튼을 눌렀을때 어떤 VC를 띄울것인지 == cell 연결하는 것이랑 비슷함
         guard let vc = stoyboard.instantiateViewController(withIdentifier: "AddViewController") as? AddViewController else { return }
-        
+        vc.type = .add
         // 2 - 1 (옵션) 네비게이션 컨트롤러가 있는 형태(제목바)로 Present 하고 싶은 경우
         // 네비케이션으로 감싼다면, present 전환 방식도 nav로 수정해줘야함
         let nav = UINavigationController(rootViewController: vc)
@@ -151,7 +151,7 @@ class DirayTableViewController: UITableViewController {
         // 직접 연결 시 : 파일만 갖고옴 , 연결했던 것은 안가지고 오니까 스토리보드로 구현시 사용할 수 없음 but, 코드로 작성할때는 사용가능
         // 🔴 코드와 스토리보드 화면에 나타나는 순서가 다름 
         let stoyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let vc = stoyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
+        guard let vc = stoyboard.instantiateViewController(withIdentifier: "AddViewController") as? AddViewController else { return }
         // 🤔 직접 넣어주면 안되나요?
         /*
          생성되는 시점이 DetailVC가 만들어지기 전에 먼저 detailLabel 에 할당을 하려고 하니까 "안만들어졌는데 어떻게 할당해요??" 라는 오류를 발생시킴
@@ -161,11 +161,20 @@ class DirayTableViewController: UITableViewController {
         
         
         // 2️⃣ send - 데이터 보내기 : vc에서 가지고 있는 프로퍼티에 데이터 추가
-        let row = list[indexPath.row]
-        vc.detailString = "디테일 뷰 입니다. \(row)"
+        // let row = list[indexPath.row]
+        //vc.detailString = "디테일 뷰 입니다. \(row)"
+        
+        vc.type = .edit
         // 4. 화면 띄우기
         
         // ❗️ 인터페이스 빌더에 네비게이션 컨트롤러가 임베드 되어 있어야만 Push가 동작함 - 👉엔트리 포인트 중요
         navigationController?.pushViewController(vc, animated: true)
+        
+        
+        
+        
+        
+        
+        
     }
 }

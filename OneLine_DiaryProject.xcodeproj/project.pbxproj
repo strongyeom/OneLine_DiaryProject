@@ -21,6 +21,7 @@
 		263F99572A777960000DCAF9 /* SearchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263F99562A777960000DCAF9 /* SearchCollectionViewController.swift */; };
 		263F995A2A777ABC000DCAF9 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263F99582A777ABC000DCAF9 /* SearchCollectionViewCell.swift */; };
 		263F995B2A777ABC000DCAF9 /* SearchCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 263F99592A777ABC000DCAF9 /* SearchCollectionViewCell.xib */; };
+		26E76FF42A79F23100CAD199 /* TimeLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E76FF32A79F23100CAD199 /* TimeLineViewController.swift */; };
 		26F4DF8A2A789B4C0003D0C9 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F4DF892A789B4C0003D0C9 /* SettingTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		263F99562A777960000DCAF9 /* SearchCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewController.swift; sourceTree = "<group>"; };
 		263F99582A777ABC000DCAF9 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		263F99592A777ABC000DCAF9 /* SearchCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCollectionViewCell.xib; sourceTree = "<group>"; };
+		26E76FF32A79F23100CAD199 /* TimeLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineViewController.swift; sourceTree = "<group>"; };
 		26F4DF892A789B4C0003D0C9 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,6 +79,7 @@
 				263F99382A773A46000DCAF9 /* AppDelegate.swift */,
 				263F993A2A773A46000DCAF9 /* SceneDelegate.swift */,
 				263F993E2A773A46000DCAF9 /* Main.storyboard */,
+				26E76FF52A79F23600CAD199 /* TimeLineVC-Delegate,DataSource */,
 				263F995E2A777AC3000DCAF9 /* CollectionView */,
 				263F995D2A777AC1000DCAF9 /* DiaryVC */,
 				26F4DF882A789AFA0003D0C9 /* SettingVC */,
@@ -108,6 +111,14 @@
 				263F99592A777ABC000DCAF9 /* SearchCollectionViewCell.xib */,
 			);
 			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		26E76FF52A79F23600CAD199 /* TimeLineVC-Delegate,DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				26E76FF32A79F23100CAD199 /* TimeLineViewController.swift */,
+			);
+			path = "TimeLineVC-Delegate,DataSource";
 			sourceTree = "<group>";
 		};
 		26F4DF882A789AFA0003D0C9 /* SettingVC */ = {
@@ -197,6 +208,7 @@
 				263F99502A773BBE000DCAF9 /* DiaryTableViewCell.swift in Sources */,
 				26F4DF8A2A789B4C0003D0C9 /* SettingTableViewController.swift in Sources */,
 				263F994D2A773AD2000DCAF9 /* DirayTableViewController.swift in Sources */,
+				26E76FF42A79F23100CAD199 /* TimeLineViewController.swift in Sources */,
 				263F99532A7752B7000DCAF9 /* DetailViewController.swift in Sources */,
 				263F99392A773A46000DCAF9 /* AppDelegate.swift in Sources */,
 				263F993B2A773A46000DCAF9 /* SceneDelegate.swift in Sources */,
