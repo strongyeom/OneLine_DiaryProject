@@ -9,17 +9,35 @@ import UIKit
 
 class SearchCollectionViewController: UICollectionViewController {
     
+    let searchBar = UISearchBar()
+    
+    let exampleList: [String] = ["드라마", "영화", "애니", "장르", "극한직업", "아이오에스" ,"영상", "장기판","북극"]
+    var searchResultList: [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        settingXib()
+        configureSearchBar()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(cancelBtnClicked(_:)))
+        setCollectionViewLayout()
+    }
+    
+    func configureSearchBar() {
+        searchBar.placeholder = "검색어를 입력해주세요"
+        searchBar.showsCancelButton = true
+        navigationItem.titleView = searchBar
+        searchBar.delegate = self
+    }
+    
+    
+    func settingXib() {
         let nib = UINib(nibName: "SearchCollectionViewCell", bundle: nil)
         
         collectionView.register(nib, forCellWithReuseIdentifier: "SearchCollectionViewCell")
         
-        navigationItem.title = "콜렉션 뷰 입니다."
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(cancelBtnClicked(_:)))
-        setCollectionViewLayout()
     }
+    
     
     @objc func cancelBtnClicked(_ sender: UIBarButtonItem) {
         
@@ -53,15 +71,62 @@ class SearchCollectionViewController: UICollectionViewController {
     
     // 1. 셀의 갯수
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
+        return searchResultList.count
     }
     
     // 2. 셀의 데이터 및 디자인
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCollectionViewCell", for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell()}
         cell.backgroundColor = .yellow
-        cell.contentLabel.text = "\(indexPath)"
+        cell.contentLabel.text = searchResultList[indexPath.item]
         return cell
     }
     
+}
+
+
+// MARK: - UISearchBarDelegate
+extension SearchCollectionViewController: UISearchBarDelegate {
+    // cancel 버튼이 눌렸을때
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchResultList.removeAll()
+        collectionView.reloadData()
+    }
+    
+    
+    //  글자가 바뀔때마다
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        for item in exampleList {
+            if item.contains(searchBar.text!) {
+                searchResultList.append(item)
+            }
+        }
+        
+        // 빈값일때 result 지워주기
+        if searchText.isEmpty {
+            searchResultList.removeAll()
+        }
+        
+        collectionView.reloadData()
+    }
+    
+    // 리턴키가 눌렸을 때
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchResultList.removeAll()
+        
+        for item in exampleList {
+            if item.contains(searchBar.text!) {
+                searchResultList.append(item)
+            }
+        }
+        
+        
+        
+        searchBar.text = ""
+        view.endEditing(true)
+        collectionView.reloadData()
+    }
 }

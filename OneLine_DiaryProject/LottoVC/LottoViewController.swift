@@ -13,8 +13,14 @@ class LottoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     @IBOutlet var numberTextField: UITextField!
     
    let pickerView = UIPickerView()
+    // Array(repeating: "A", count: 10)
+    // repeating : 어떤 값을 반복시킬 것이냐 ex) "A", 100, ...
+    // count : 반복 횟수
     
-    let list: [String] = ["영화", "애니메이션", "드라마", "장르", "지상파", "공중파"]
+    // Array( _ ) : 범위 연산자로 원하는 값을 적어주면 된다 ex) 0...10, 20..<300
+    let list = Array(Array(1...1100).reversed())
+    
+   // let list: [Int] = Array(1...1100).reversed()
     
     
     override func viewDidLoad() {
@@ -41,12 +47,12 @@ class LottoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     // value가 바뀌면 어떤걸 해줄것이냐? 휠 드르륵
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         print("didSelectRow - row: \(row), 데이터 : \(list[row])")
-        numberTextField.text = list[row]
+        numberTextField.text = "\(list[row])"
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         print(#function)
-        return list[row]
+        return "\(list[row])"
     }
     
     
