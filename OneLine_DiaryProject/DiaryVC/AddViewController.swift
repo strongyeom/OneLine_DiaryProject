@@ -7,38 +7,78 @@
 
 import UIKit
 
-enum TransitionType {
-    case add
-    case edit
+enum TransitionType: String {
+    case add = "추가 화면"
+    case edit = "수정 화면"
 }
-
-class AddViewController: UIViewController {
+// 1. UITextViewDelegate
+// 2. textView.delegate = self : 부하직원 연결
+// 3. 필요한 메서드 호출해서 구현
+class AddViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet var textView: UITextView!
     var type: TransitionType = .add
-    var editText: String?
+    
+    var editText: String = ""
+    
+    // 플레이스 홀더
+    let placeHolderText = "내용을 입력해주세요"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        textView.text = editText
+        title = type.rawValue
+        
+        textView.delegate = self
+        
         
         
         switch type {
         case .add:
             // + 버튼에서 Navigation으로 감쌌기 때문에 제목과 옵션은 띄어지는 부분에서 추가 하면 됨
-            navigationItem.title  = "추가 화면"
             navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(cloaseBtnClicked(_: )))
             
             // navigationItem 적용되고 나서 tintColor를 적용해야 함
             navigationItem.leftBarButtonItem?.tintColor = .orange
-            textView.text = ""
+
+            textView.text = placeHolderText
+            textView.textColor = .red
+            
         case .edit:
-            title = "수정 화면"
-            guard let editText else { return }
-            textView.text = editText
+                print("edit 일때")
         }
         
   
         setBgColor()
+    }
+    
+    
+    // MARK: - 텍스트 뷰의 글자가 바뀔때 마다 호출됨 ex) 글자수 체크 가능
+    func textViewDidChange(_ textView: UITextView) {
+        print(textView.text.count)
+        title = "숫자 증가 \(textView.text.count)"
+    }
+    
+    // MARK: - 편집이 시작 됐을때 ( 커서가 시작될 때 )
+    // 플레이스 홀더와 텍스트뷰 글자가 같다면 clear, color
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        print(#function)
+        if textView.text == placeHolderText {
+            textView.text = nil
+            textView.textColor = .black
+            
+        }
+    }
+    
+    // MARK: - 편집이 끝났을때 ( 커서가 없어지는 순간 )
+    // 사용자가 아무 글자도 안 썼으면 플레이스 홀더 글자 보이게 설정
+    func textViewDidEndEditing(_ textView: UITextView) {
+        print(#function)
+        if textView.text.isEmpty {
+            textView.text = placeHolderText
+            textView.textColor = .red
+        }
     }
     
     @objc func cloaseBtnClicked(_ sender: UIBarButtonItem) {
