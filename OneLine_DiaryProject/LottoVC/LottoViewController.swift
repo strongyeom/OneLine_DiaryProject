@@ -9,6 +9,15 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
+// MARK: - Lotto
+struct Lotto: Codable {
+    let totSellamnt: Int
+    let returnValue, drwNoDate: String
+    let firstWinamnt, drwtNo6, drwtNo4, firstPrzwnerCo: Int
+    let drwtNo5, bnusNo, firstAccumamnt, drwNo: Int
+    let drwtNo2, drwtNo3, drwtNo1: Int
+}
+
 class LottoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
  
     
@@ -42,31 +51,36 @@ class LottoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         numberTextField.inputView = pickerView
         // textField의 색깔을 clear로 설정하여 커서가 없어진것 처럼 보여지게 할 수 있음 
         numberTextField.tintColor = .clear
-        fetchNetworkig(text: "1079")
+        fetchNetworkig(text: 1010)
        print("5")
     }
     
     // Work with Alamofire
-    func fetchNetworkig(text: String) {
+    func fetchNetworkig(text: Int) {
         
         let url = "https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=\(text)"
         
-        AF.request(url, method: .get).validate().responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                print("JSON: \(json)")
-                print("3")
-                let date = json["drwNoDate"].stringValue
-                let bonusNumber = json["bnusNo"].intValue
-                
-                print(date, bonusNumber)
-                self.dateLabel.text = date
-                self.bnusNumberLabel.text = "\(bonusNumber)번"
-                
-            case .failure(let error):
-                print(error)
-            }
+        AF.request(url, method: .get).validate()
+            .responseDecodable(of: Lotto.self) { response in
+                guard let lotto = response.value else { return }
+                self.dateLabel.text = lotto.drwNoDate
+                self.bnusNumberLabel.text = "\(lotto.bnusNo)번"
+            
+//            switch response.result {
+//            case .success(let value):
+//                let json = JSON(value)
+//                print("JSON: \(json)")
+//                print("3")
+//                let date = json["drwNoDate"].stringValue
+//                let bonusNumber = json["bnusNo"].intValue
+//
+//                print(date, bonusNumber)
+//                self.dateLabel.text = date
+//                self.bnusNumberLabel.text = "\(bonusNumber)번"
+//
+//            case .failure(let error):
+//                print(error)
+//            }
         }
     }
     
@@ -86,7 +100,7 @@ class LottoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         print("didSelectRow - row: \(row), 데이터 : \(list[row])")
         numberTextField.text = "\(list[row])"
-        fetchNetworkig(text: numberTextField.text ?? "1")
+        fetchNetworkig(text: list[row])
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
